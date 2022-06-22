@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CV</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_dashboard">A propros</string>
+    <string name="title_notifications">Contact</string>
+    <string name="dusautoir_thibaut">DUSAUTOIR THIBAUT</string>
+    <string name="profil">PROFIL</string>
+</resources>
