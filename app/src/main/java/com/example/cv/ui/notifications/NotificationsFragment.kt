@@ -7,8 +7,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.Button
+import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.cv.databinding.FragmentNotificationsBinding
@@ -51,6 +52,43 @@ class NotificationsFragment : Fragment() {
             } catch (e: ActivityNotFoundException) {
                 //error
             }
+        }
+
+        val button : Button = binding.socialBtn
+        val linearLayout : LinearLayout = binding.linearLayout
+        val lnBtn : Button  = binding.linkedinBtn
+        val gtBtn : Button  = binding.githubBtn
+
+        button.setOnClickListener {
+            if(lnBtn.isVisible && gtBtn.isVisible) {
+                lnBtn.visibility = View.GONE
+                gtBtn.visibility = View.GONE
+                linearLayout.layoutParams.height = 0
+                linearLayout.visibility = View.INVISIBLE
+                button.setText("Réseaux sociaux \uD83D\uDD3D")
+            } else {
+                lnBtn.visibility = View.VISIBLE
+                gtBtn.visibility = View.VISIBLE
+                linearLayout.visibility = View.VISIBLE
+                linearLayout.layoutParams.height = 260
+                button.setText("Réseaux sociaux \uD83D\uDD3C")
+            }
+        }
+
+        lnBtn.setOnClickListener() {
+                val viewIntent = Intent(
+                    "android.intent.action.VIEW",
+                    Uri.parse("http://www.linkedin.com/in/thibautdusautoir/")
+                )
+                startActivity(viewIntent)
+        }
+
+        gtBtn.setOnClickListener() {
+            val viewIntent = Intent(
+                "android.intent.action.VIEW",
+                Uri.parse("http://www.github.com/tdusautoir")
+            )
+            startActivity(viewIntent)
         }
 //
 //        val textView: TextView = binding.textNotifications
